@@ -1,10 +1,9 @@
 package com.example.FoodTakeawayManagement.dataTransferObject.order;
 
-import com.example.FoodTakeawayManagement.model.food.Food;
+import com.example.FoodTakeawayManagement.dataTransferObject.food.FoodSaveRequest;
 import com.example.FoodTakeawayManagement.model.order.DeliveryWay;
 import com.example.FoodTakeawayManagement.model.order.OrderStatus;
 import com.example.FoodTakeawayManagement.model.order.PaymentMethod;
-import com.example.FoodTakeawayManagement.model.user.User;
 import com.example.FoodTakeawayManagement.model.restaurant.Restaurant;
 import lombok.Builder;
 import lombok.Data;
@@ -15,8 +14,8 @@ import java.util.List;
 @Builder
 public class OrderSaveRequest {
     private Restaurant restaurant;
-    private List<Food> foods;
-    private User user;
+    private List<FoodSaveRequest> foods;
+    private long user;
     private String address;
     private float price;
     private OrderStatus orderStatus;

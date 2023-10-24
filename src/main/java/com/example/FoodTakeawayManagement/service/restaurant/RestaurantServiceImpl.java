@@ -3,6 +3,7 @@ package com.example.FoodTakeawayManagement.service.restaurant;
 import com.example.FoodTakeawayManagement.exception.RecordBadRequestException;
 import com.example.FoodTakeawayManagement.exception.RecordNotFoundException;
 import com.example.FoodTakeawayManagement.model.food.Food;
+import com.example.FoodTakeawayManagement.model.restaurant.Rating;
 import com.example.FoodTakeawayManagement.model.restaurant.Restaurant;
 import com.example.FoodTakeawayManagement.model.restaurant.RestaurantStatus;
 import com.example.FoodTakeawayManagement.repository.RestaurantRepository;
@@ -72,12 +73,24 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    public int getRating(long id) {
+        Restaurant restaurant = findById(id);
+        return restaurant.getRating();
+    }
+
+    @Override
+    public List<Rating> getRatings(long id) {
+        Restaurant restaurant = findById(id);
+        return restaurant.getRatings();
+    }
+
+    @Override
     public void deleteById(long id) {
         restaurantRepository.deleteById(id);
     }
 
     @Override
-    public Food addToMenu(long restaurantId, Food food) {
+    public Food addFoodToMenu(long restaurantId, Food food) {
         Restaurant restaurant = findById(restaurantId);
         restaurant.addToMenu(food);
         return food;

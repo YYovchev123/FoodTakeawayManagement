@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "rating")
+@Table(name = "ratings")
 public class Rating {
     @Id
     @Column(name = "id", nullable = false)

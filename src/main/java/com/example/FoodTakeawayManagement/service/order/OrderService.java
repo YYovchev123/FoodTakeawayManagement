@@ -11,9 +11,9 @@ public interface OrderService {
 
     List<Order> findAll();
 
-    String updateAddress(long id, String address);
+    Order updateAddress(long id, String address);
 
-    OrderStatus updateOrderStatus(long id, OrderStatus orderStatus);
+    Order updateOrderStatus(long id, OrderStatus orderStatus);
 
     Order findById(long id);
 

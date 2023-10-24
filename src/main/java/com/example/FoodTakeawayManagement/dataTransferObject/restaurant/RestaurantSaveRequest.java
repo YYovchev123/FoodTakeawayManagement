@@ -1,6 +1,5 @@
 package com.example.FoodTakeawayManagement.dataTransferObject.restaurant;
 
-import com.example.FoodTakeawayManagement.model.food.Food;
 import com.example.FoodTakeawayManagement.model.restaurant.RestaurantCategory;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +15,6 @@ public class RestaurantSaveRequest {
     private String phone;
     private String logoImage;
     private String image;
-    private List<Food> menu;
+    private List<Long> menu;
     private RestaurantCategory restaurantCategory;
 }

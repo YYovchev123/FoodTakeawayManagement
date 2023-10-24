@@ -3,7 +3,10 @@ package com.example.FoodTakeawayManagement.model.user;
 import com.example.FoodTakeawayManagement.model.order.Order;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
@@ -14,10 +17,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
+
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -37,21 +42,13 @@ public class User {
     @NotNull
     private String password;
 
-    @NotNull
     @CreationTimestamp
     private Instant created;
 
-    @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "orders_id")
     private Set<Order> orders;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<com.example.FoodTakeawayManagement.model.user.Role> roles;
+    @ManyToOne
+    private Role role;
 }

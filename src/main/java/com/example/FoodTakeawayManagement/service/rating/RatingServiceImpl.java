@@ -38,10 +38,10 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public int rate(long restaurantId, Rating rating) {
+    public Rating rate(long restaurantId, Rating rating) {
         Restaurant restaurant = restaurantService.findById(restaurantId);
         restaurant.rate(rating);
-        return rating.getRating();
+        return rating;
     }
 
 }

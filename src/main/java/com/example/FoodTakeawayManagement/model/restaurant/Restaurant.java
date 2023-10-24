@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "restaurant")
+@Table(name = "restaurants")
 public class Restaurant {
     @Id
     @Column(name = "id", nullable = false)

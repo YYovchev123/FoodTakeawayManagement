@@ -14,5 +14,5 @@ public interface RatingService {
 
     void deleteById(long id);
 
-    int rate(long restaurantId, Rating rating);
+    Rating rate(long restaurantId, Rating rating);
 }

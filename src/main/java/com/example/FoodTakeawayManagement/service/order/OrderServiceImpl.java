@@ -28,21 +28,21 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Override
-    public String updateAddress(long id, String address) {
+    public Order updateAddress(long id, String address) {
         Order order = findById(id);
         if(order.getOrderStatus() == OrderStatus.ON_WAY || order.getOrderStatus() == OrderStatus.DELIVERED) {
             throw new RecordBadRequestException("Can't update address because order is either delivered or on it's way");
         }
         order.setAddress(address);
-        return address;
+        return order;
     }
 
     // Make this function only available for certain users
     @Override
-    public OrderStatus updateOrderStatus(long id, OrderStatus orderStatus) {
+    public Order updateOrderStatus(long id, OrderStatus orderStatus) {
         Order order = findById(id);
         order.setOrderStatus(orderStatus);
-        return orderStatus;
+        return order;
     }
 
     @Override

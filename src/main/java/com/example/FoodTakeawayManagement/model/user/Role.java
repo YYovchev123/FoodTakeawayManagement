@@ -24,6 +24,7 @@ public class Role {
     @Column(name = "role", unique = true)
     private String role;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "users_id")
     private Set<User> users;
 }

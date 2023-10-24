@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
     @Id
     @Column(name = "id", nullable = false)
@@ -37,7 +37,7 @@ public class Order {
     // Check if this needs fixing
     @NotNull
     @ManyToOne
-    private User users;
+    private User user;
 
     @NotNull
     private String address;
