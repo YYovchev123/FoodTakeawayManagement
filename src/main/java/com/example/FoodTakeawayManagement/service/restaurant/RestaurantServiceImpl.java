@@ -7,6 +7,7 @@ import com.example.FoodTakeawayManagement.model.restaurant.Rating;
 import com.example.FoodTakeawayManagement.model.restaurant.Restaurant;
 import com.example.FoodTakeawayManagement.model.restaurant.RestaurantStatus;
 import com.example.FoodTakeawayManagement.repository.RestaurantRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -90,6 +91,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    @Transactional
     public Food addFoodToMenu(long restaurantId, Food food) {
         Restaurant restaurant = findById(restaurantId);
         restaurant.addToMenu(food);

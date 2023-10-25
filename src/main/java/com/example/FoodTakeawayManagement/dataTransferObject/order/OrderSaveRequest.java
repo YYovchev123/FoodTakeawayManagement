@@ -13,12 +13,10 @@ import java.util.List;
 @Data
 @Builder
 public class OrderSaveRequest {
-    private Restaurant restaurant;
-    private List<FoodSaveRequest> foods;
+    private long restaurant;
+    private List<Long> foods;
     private long user;
     private String address;
-    private float price;
-    private OrderStatus orderStatus;
     private DeliveryWay deliveryWay;
     private PaymentMethod paymentMethod;
 }

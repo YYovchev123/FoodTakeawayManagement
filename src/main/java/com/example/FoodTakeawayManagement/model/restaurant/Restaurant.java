@@ -47,6 +47,8 @@ public class Restaurant {
 
     private int rating;
 
+
+    // Make the manu an ID which points to a new table with all the foods
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "foods_id")

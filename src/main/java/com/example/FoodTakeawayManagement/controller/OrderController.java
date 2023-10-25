@@ -64,4 +64,7 @@ public class OrderController {
         OrderResponse orderResponse = orderConverter.convert(updatedOrder);
         return ResponseEntity.ok(orderResponse);
     }
+
+    // Create a method for all user orders
+    // Create a method for all active orders for specific user
 }

@@ -47,6 +47,9 @@ public class RestaurantController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<RestaurantResponse> getById(@PathVariable long id) {
         Restaurant restaurant = restaurantService.findById(id);
+        ///
+        System.out.println(restaurant.getMenu());
+        ///
         RestaurantResponse restaurantResponse = restaurantConverter.convert(restaurant);
         return ResponseEntity.ok(restaurantResponse);
     }
@@ -69,7 +72,6 @@ public class RestaurantController {
         return ResponseEntity.ok(ratingResponses);
     }
 
-    // FIX IT DOESN'T ADD THE FOOD TO THE MENU
     @PutMapping(value = "/{foodId}/{restaurantId}")
     public ResponseEntity<RestaurantResponse> addToMenu(@PathVariable long foodId, @PathVariable long restaurantId) {
         Restaurant restaurant = restaurantService.findById(restaurantId);
