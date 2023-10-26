@@ -15,7 +15,6 @@ public class OrderValidator {
 
     private RestaurantService restaurantService;
 
-    // Make a function that checks if the ordered food is in the manu of the restaurant
     public void foodIsInMenu(List<Food> foods, long restaurantId) {
         Restaurant restaurant = restaurantService.findById(restaurantId);
         List<Food> menu = restaurant.getMenu();
@@ -25,11 +24,5 @@ public class OrderValidator {
                 throw new RecordBadRequestException(String.format("%s is not in the menu", food.getName()));
             }
         }
-//        for (int i = 0; i < foods.size(); i++) {
-//            Food food = foodService.findById(i);
-//            if(!menu.contains(food)) {
-//                throw new RecordBadRequestException(String.format("%s is not in the menu", food));
-//            }
-//        }
     }
 }
