@@ -24,17 +24,14 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Check if this needs fixing
     @ManyToOne
     @NotNull
     private Restaurant restaurant;
 
-    // Check if this needs fixing
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     private List<Food> foods;
 
-    // Check if this needs fixing
     @NotNull
     @ManyToOne
     private User user;

@@ -5,6 +5,8 @@ import com.example.FoodTakeawayManagement.exception.RecordNotFoundException;
 import com.example.FoodTakeawayManagement.model.order.Order;
 import com.example.FoodTakeawayManagement.model.order.OrderStatus;
 import com.example.FoodTakeawayManagement.repository.OrderRepository;
+import com.example.FoodTakeawayManagement.validator.OrderValidator;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +17,11 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService{
 
     private OrderRepository orderRepository;
+    private OrderValidator orderValidator;
 
     @Override
     public Order save(Order order) {
+        orderValidator.foodIsInMenu(order.getFoods(), order.getRestaurant().getId());
         return orderRepository.save(order);
     }
 
@@ -28,6 +32,7 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Override
+    @Transactional
     public Order updateAddress(long id, String address) {
         Order order = findById(id);
         if(order.getOrderStatus() == OrderStatus.ON_WAY || order.getOrderStatus() == OrderStatus.DELIVERED) {
@@ -39,6 +44,7 @@ public class OrderServiceImpl implements OrderService{
 
     // Make this function only available for certain users
     @Override
+    @Transactional
     public Order updateOrderStatus(long id, OrderStatus orderStatus) {
         Order order = findById(id);
         order.setOrderStatus(orderStatus);
