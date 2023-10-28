@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RatingService {
 
-//    Rating save(Rating rating);
+    Rating save(Rating rating);
 
     List<Rating> findAll();
 

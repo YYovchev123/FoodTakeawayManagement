@@ -19,7 +19,7 @@ public interface RestaurantService {
 
     Restaurant findById(long id);
 
-    int getRating(long id);
+    float getRating(long id);
 
     List<Rating> getRatings(long id);
 

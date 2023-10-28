@@ -39,6 +39,7 @@ public class Food {
     @Enumerated(EnumType.STRING)
     private FoodCategory foodCategory;
 
+    // Make ingredients a list of strings
     @NotNull
     private String ingredients;
 }

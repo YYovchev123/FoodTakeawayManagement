@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class RestaurantConverter {
 
     private final FoodConverter foodConverter;
+    private final RatingConverter ratingConverter;
     private FoodService foodService;
 
     public Restaurant convert(RestaurantSaveRequest restaurantSaveRequest) {
@@ -40,12 +42,15 @@ public class RestaurantConverter {
 
     public RestaurantResponse convert(Restaurant restaurant) {
         return RestaurantResponse.builder()
+                .id(restaurant.getId())
                 .name(restaurant.getName())
                 .location(restaurant.getLocation())
                 .email(restaurant.getEmail())
                 .phone(restaurant.getPhone())
                 .logoImage(restaurant.getLogoImage())
                 .image(restaurant.getImage())
+                .rating(restaurant.getRating())
+                .ratings(restaurant.getRatings())
                 .menu(restaurant.getMenu().stream().map(foodConverter::convert).collect(Collectors.toList()))
                 .restaurantCategory(restaurant.getRestaurantCategory())
                 .restaurantStatus(restaurant.getRestaurantStatus())

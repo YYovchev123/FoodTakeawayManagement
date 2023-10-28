@@ -19,6 +19,7 @@ public class RatingConverter {
 
     public RatingResponse convert(Rating rating) {
         return RatingResponse.builder()
+                .id(rating.getId())
                 .rating(rating.getRating())
                 .description(rating.getDescription())
                 .build();

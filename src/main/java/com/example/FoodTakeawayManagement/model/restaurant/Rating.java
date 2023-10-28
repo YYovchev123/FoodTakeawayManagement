@@ -22,5 +22,6 @@ public class Rating {
     @NotNull @Min(1) @Max(5)
     private int rating;
 
+
     private String description;
 }

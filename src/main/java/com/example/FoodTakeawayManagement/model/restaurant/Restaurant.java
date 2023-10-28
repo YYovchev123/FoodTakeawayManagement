@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Data
@@ -45,7 +46,7 @@ public class Restaurant {
     @JoinColumn(name = "ratings_id")
     private List<Rating> ratings;
 
-    private int rating;
+    private float rating;
 
 
     // Make the manu an ID which points to a new table with all the foods
@@ -66,13 +67,17 @@ public class Restaurant {
     }
 
     public void rate(Rating rating) {
-        //  Check if this for loop works
-        int sum = 0;
+        // Error: Cannot format given Object as a Number
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+
+        ratings.add(rating);
+        float sum = 0;
         for(int i = 0; i < ratings.size(); i++) {
             Rating ratingI = ratings.get(i);
             sum += ratingI.getRating();
         }
         this.rating = sum / ratings.size();
-        ratings.add(rating);
+        df.format(rating);
     }
 }

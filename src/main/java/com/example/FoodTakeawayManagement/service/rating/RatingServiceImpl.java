@@ -5,6 +5,7 @@ import com.example.FoodTakeawayManagement.model.restaurant.Rating;
 import com.example.FoodTakeawayManagement.model.restaurant.Restaurant;
 import com.example.FoodTakeawayManagement.repository.RatingRepository;
 import com.example.FoodTakeawayManagement.service.restaurant.RestaurantService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,10 @@ public class RatingServiceImpl implements RatingService {
     private RatingRepository ratingRepository;
     private RestaurantService restaurantService;
 
-//    @Override
-//    public Rating save(Rating rating) {
-//        return ratingRepository.save(rating);
-//    }
+    @Override
+    public Rating save(Rating rating) {
+        return ratingRepository.save(rating);
+    }
 
     @Override
     public List<Rating> findAll() {
@@ -38,9 +39,11 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
+    @Transactional
     public Rating rate(long restaurantId, Rating rating) {
+        Rating ratingSaved = save(rating);
         Restaurant restaurant = restaurantService.findById(restaurantId);
-        restaurant.rate(rating);
+        restaurant.rate(ratingSaved);
         return rating;
     }
 

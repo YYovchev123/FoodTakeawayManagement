@@ -24,6 +24,7 @@ public class FoodConverter {
 
     public FoodResponse convert(Food food) {
         return FoodResponse.builder()
+                .id(food.getId())
                 .name(food.getName())
                 .price(food.getPrice())
                 .description(food.getDescription())

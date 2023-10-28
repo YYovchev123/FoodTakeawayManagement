@@ -51,6 +51,7 @@ public class OrderConverter {
 
     public OrderResponse convert(Order order) {
         return OrderResponse.builder()
+                .id(order.getId())
                 .restaurant(order.getRestaurant())
                 .foods(order.getFoods().stream().map(foodConverter::convert).collect(Collectors.toList()))
                 .user(order.getUser())

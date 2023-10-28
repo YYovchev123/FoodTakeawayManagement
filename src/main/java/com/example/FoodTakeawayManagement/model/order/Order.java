@@ -30,10 +30,13 @@ public class Order {
 
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "foods_id")
     private List<Food> foods;
 
     @NotNull
     @ManyToOne
+    // Check if joinColum works
+    @JoinColumn(name="user_id", nullable=false)
     private User user;
 
     @NotNull

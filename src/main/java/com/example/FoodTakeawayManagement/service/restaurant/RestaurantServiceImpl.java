@@ -74,7 +74,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public int getRating(long id) {
+    public float getRating(long id) {
         Restaurant restaurant = findById(id);
         return restaurant.getRating();
     }

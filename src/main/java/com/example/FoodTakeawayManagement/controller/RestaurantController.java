@@ -61,7 +61,7 @@ public class RestaurantController {
     }
 
     @GetMapping(value = "/rating/{id}")
-    public ResponseEntity<Integer> getRating(@PathVariable long id) {
+    public ResponseEntity<Float> getRating(@PathVariable long id) {
          return ResponseEntity.ok(restaurantService.getRating(id));
     }
 

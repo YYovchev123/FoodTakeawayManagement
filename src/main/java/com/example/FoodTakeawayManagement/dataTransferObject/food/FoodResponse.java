@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class FoodResponse {
+    private long id;
     private String name;
     private float price;
     private String description;
