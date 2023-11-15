@@ -67,10 +67,6 @@ public class Restaurant {
     }
 
     public void rate(Rating rating) {
-        // Error: Cannot format given Object as a Number
-        DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(2);
-
         ratings.add(rating);
         float sum = 0;
         for(int i = 0; i < ratings.size(); i++) {
@@ -78,6 +74,5 @@ public class Restaurant {
             sum += ratingI.getRating();
         }
         this.rating = sum / ratings.size();
-        df.format(rating);
     }
 }
