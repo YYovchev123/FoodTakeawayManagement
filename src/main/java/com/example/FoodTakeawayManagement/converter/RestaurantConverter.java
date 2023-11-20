@@ -1,5 +1,6 @@
 package com.example.FoodTakeawayManagement.converter;
 
+import com.example.FoodTakeawayManagement.dataTransferObject.restaurant.RestaurantOrderResponse;
 import com.example.FoodTakeawayManagement.dataTransferObject.restaurant.RestaurantResponse;
 import com.example.FoodTakeawayManagement.dataTransferObject.restaurant.RestaurantSaveRequest;
 import com.example.FoodTakeawayManagement.model.food.Food;
@@ -52,6 +53,18 @@ public class RestaurantConverter {
                 .rating(restaurant.getRating())
                 .ratings(restaurant.getRatings())
                 .menu(restaurant.getMenu().stream().map(foodConverter::convert).collect(Collectors.toList()))
+                .restaurantCategory(restaurant.getRestaurantCategory())
+                .restaurantStatus(restaurant.getRestaurantStatus())
+                .build();
+    }
+
+    public RestaurantOrderResponse convertRestaurantOrder(Restaurant restaurant) {
+        return RestaurantOrderResponse.builder()
+                .id(restaurant.getId())
+                .name(restaurant.getName())
+                .location(restaurant.getLocation())
+                .email(restaurant.getEmail())
+                .phone(restaurant.getPhone())
                 .restaurantCategory(restaurant.getRestaurantCategory())
                 .restaurantStatus(restaurant.getRestaurantStatus())
                 .build();

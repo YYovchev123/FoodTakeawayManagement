@@ -1,6 +1,7 @@
 package com.example.FoodTakeawayManagement.dataTransferObject.order;
 
 import com.example.FoodTakeawayManagement.dataTransferObject.food.FoodResponse;
+import com.example.FoodTakeawayManagement.dataTransferObject.restaurant.RestaurantOrderResponse;
 import com.example.FoodTakeawayManagement.model.order.DeliveryWay;
 import com.example.FoodTakeawayManagement.model.order.OrderStatus;
 import com.example.FoodTakeawayManagement.model.order.PaymentMethod;
@@ -15,7 +16,7 @@ import java.util.List;
 @Builder
 public class OrderResponse {
     private long id;
-    private Restaurant restaurant;
+    private RestaurantOrderResponse restaurant;
     private List<FoodResponse> foods;
     private User user;
     private String address;

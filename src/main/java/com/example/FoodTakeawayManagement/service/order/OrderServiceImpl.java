@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService{
     private OrderValidator orderValidator;
 
     @Override
+    @Transactional
     public Order save(Order order) {
         orderValidator.foodIsInMenu(order.getFoods(), order.getRestaurant().getId());
         return orderRepository.save(order);

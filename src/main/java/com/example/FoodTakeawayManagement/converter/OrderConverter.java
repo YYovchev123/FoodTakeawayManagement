@@ -20,9 +20,11 @@ import java.util.stream.Collectors;
 public class OrderConverter {
 
     private final FoodConverter foodConverter;
+    private final RestaurantConverter restaurantConverter;
     private FoodService foodService;
     private UserService userService;
     private RestaurantService restaurantService;
+
 
     public Order convert(OrderSaveRequest orderSaveRequest) {
         // Check if this works
@@ -52,7 +54,7 @@ public class OrderConverter {
     public OrderResponse convert(Order order) {
         return OrderResponse.builder()
                 .id(order.getId())
-                .restaurant(order.getRestaurant())
+                .restaurant(restaurantConverter.convertRestaurantOrder(order.getRestaurant()))
                 .foods(order.getFoods().stream().map(foodConverter::convert).collect(Collectors.toList()))
                 .user(order.getUser())
                 .address(order.getAddress())
