@@ -1,11 +1,14 @@
 package com.example.FoodTakeawayManagement.model.food;
 
+import com.example.FoodTakeawayManagement.model.order.Order;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Data
 @Builder
@@ -42,4 +45,7 @@ public class Food {
     // Make ingredients a list of strings
     @NotNull
     private String ingredients;
+
+    @ManyToMany(mappedBy = "foods")
+    private Set<Order> orders;
 }
