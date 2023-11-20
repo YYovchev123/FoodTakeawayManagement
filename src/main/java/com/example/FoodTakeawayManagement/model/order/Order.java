@@ -29,8 +29,12 @@ public class Order {
     private Restaurant restaurant;
 
     @NotNull
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "food_id")
+    @ManyToMany
+    @JoinTable(
+            name = "order_food",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "food_id")
+    )
     private List<Food> foods;
 
     @NotNull
